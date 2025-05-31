@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Tabs to Windows (URL Flag Method)",
+  "version": "1.7",
+  "description": "Moves tabs to windows, keeps Ctrl+Clicked links as tabs by modifying URL.",
+  "permissions": [
+    "tabs",
+    "webNavigation" // Needed for onCreatedNavigationTarget
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], // Run on all http/https URLs
+      "js": ["content.js"],
+      "run_at": "document_start", // Run early
+      "all_frames": true // Run in iframes too
+    }
+  ],
+  "icons": {
+    "128": "icon128.png"
+  }
+}
